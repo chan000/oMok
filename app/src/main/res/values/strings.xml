@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">omokprj-1</string>
-    <style name="LisjakaTheme" parent="@style/Theme.AppCompat">
+    <string name="app_name">omokprj2</string>
+    <style name="oMokTheme" parent="@style/Theme.AppCompat">
         <item name="android:windowBackground">@drawable/backgrnd</item>
     </style>
 </resources>
