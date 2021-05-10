@@ -133,7 +133,7 @@ public class BoardView extends View implements View.OnTouchListener {
             int cellSize = v.getHeight() / boardSize;
             curX = (int) (event.getX() / cellSize);
             curY = (int) (event.getY() / cellSize);
-            Toast.makeText(this.getContext().getApplicationContext(), curX+"", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this.getContext().getApplicationContext(), curX+"", Toast.LENGTH_SHORT).show();
         }
         invalidate();
         return true;
@@ -157,7 +157,7 @@ public class BoardView extends View implements View.OnTouchListener {
                 if ( board[i][j] == NONE ) {         //2차 행렬안에 돌이 없으면 실행한다.
                     continue;
                 }else{
-                 Bitmap bmp =blueStone;
+                    Bitmap bmp = board[i][j] == CROSS ? blueStone : redStone;
                 float y = cellSize*j + offset;
                 canvas.drawBitmap(bmp, x, y, paint);
                 }
@@ -165,6 +165,7 @@ public class BoardView extends View implements View.OnTouchListener {
         }
     }
     private void makeMove(int x, int y){
+
         board[x][y] = player;
     }
     public void playerMove(int x, int y){
