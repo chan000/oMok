@@ -3,8 +3,10 @@ package com.example.omokprj2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,11 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnput = (ImageButton)findViewById(R.id.btnput);
 
-        btnput.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                logic.playerMove1();
-            }
-        });
+
+
     }
 }

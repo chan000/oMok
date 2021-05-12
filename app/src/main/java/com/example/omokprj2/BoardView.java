@@ -35,7 +35,7 @@ public class BoardView extends View implements View.OnTouchListener {
 
 
 
-    private int curX, curY;
+    public static int curX, curY;
     private int prevX, prevY;
 
     private double scaleRate;
@@ -133,12 +133,15 @@ public class BoardView extends View implements View.OnTouchListener {
             int cellSize = v.getHeight() / boardSize;
             curX = (int) (event.getX() / cellSize);
             curY = (int) (event.getY() / cellSize);
-//            Toast.makeText(this.getContext().getApplicationContext(), curX+"", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this.getContext().getApplicationContext(), curX+","+curY+"", Toast.LENGTH_SHORT).show();
+
         }
         invalidate();
         return true;
 
     }
+
+
     private void showCursor(Canvas canvas){
         int cellSize = canvas.getHeight() / boardSize;
         int offset = (cellSize - cursor.getWidth()) / 2;
@@ -175,6 +178,7 @@ public class BoardView extends View implements View.OnTouchListener {
     }
     public void playerMove1(){
         playerMove(curX,curY);
+
     }
 
     private int getOpponent() {
@@ -205,19 +209,7 @@ public class BoardView extends View implements View.OnTouchListener {
         super.onMeasure(size, size);
     }
 
-    public void setCursor(int x, int y, boolean invalidate) {
-        curX = x;
-        curY = y;
-        if ( invalidate )
-            invalidate();
-    }
 
-    public void setBoard(int[][] board, int x, int y) {
-        this.prevX = x;
-        this.prevY = y;
-        this.board = board;
-        invalidate();
-    }
 
 
 
