@@ -1,5 +1,6 @@
 package org.ict.omokprj_1;
 
+import android.app.Fragment;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.view.LayoutInflater;
@@ -44,4 +45,6 @@ public abstract class BaseFragment extends Fragment {
         super.onResume();
         onResume(new Preferences(getActivity()));
     }
+
+    protected abstract void onActivityCreated(Bundle savedInstanceState);
 }
