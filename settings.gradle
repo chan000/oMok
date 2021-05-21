@@ -1,2 +1,2 @@
-rootProject.name = "omokprj2"
 include ':app'
+rootProject.name = "omokprj-1"

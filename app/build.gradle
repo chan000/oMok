@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.example.omokprj2"
+        applicationId "org.ict.omokprj_1"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
