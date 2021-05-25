@@ -7,8 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.fragment.app.Fragment;
-
 public abstract class BaseFragment extends Fragment {
     private View fragmentView;
 
@@ -45,6 +43,4 @@ public abstract class BaseFragment extends Fragment {
         super.onResume();
         onResume(new Preferences(getActivity()));
     }
-
-    protected abstract void onActivityCreated(Bundle savedInstanceState);
 }

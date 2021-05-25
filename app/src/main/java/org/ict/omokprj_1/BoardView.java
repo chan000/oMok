@@ -15,7 +15,7 @@ import androidx.annotation.Nullable;
 public class BoardView extends View implements View.OnTouchListener {
     private int boardSize = 15;     //바둑판 줄의 갯수
     private int[][] board;          //바둑판의 2차행렬
-
+    private OmokLogic.WinLineItem[] winLine;
 
 
     private Paint paint;
@@ -99,6 +99,9 @@ public class BoardView extends View implements View.OnTouchListener {
         for (int i = 0; i < boardSize; i++){
             float x = cellSize*i + offset;
             for (int j = 0; j < boardSize; j++){
+                if(board[i][j] == OmokLogic.NONE){
+                    continue;
+                }
                 Bitmap bmp = board[i][j] == OmokLogic.CROSS ? blueStone : redStone;
                 float y = cellSize*j + offset;
                 canvas.drawBitmap(bmp, x, y, paint);
@@ -170,6 +173,11 @@ public class BoardView extends View implements View.OnTouchListener {
 
     public void resetBoard(int[][] board){
         setBoard(board, -1, -1);
+    }
+
+    public void setWinLine(OmokLogic.WinLineItem[] winLine){
+        this.winLine = winLine;
+        invalidate();
     }
 
     public void setCallbacks(int boardSize){this.boardSize = boardSize;}
