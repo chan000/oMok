@@ -1,12 +1,11 @@
 package org.ict.omokprj_1;
 
+import android.app.Fragment;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import androidx.fragment.app.Fragment;
 
 public abstract class BaseFragment extends Fragment {
     private View fragmentView;

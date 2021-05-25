@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
-import androidx.annotation.Nullable;
 
 public abstract class OmokBaseFragment extends BaseFragment{
 
@@ -21,7 +20,7 @@ public abstract class OmokBaseFragment extends BaseFragment{
 
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         setRetainInstance(true);
         setupLogic();
@@ -32,22 +31,28 @@ public abstract class OmokBaseFragment extends BaseFragment{
         view.setCallbacks(new BoardView.Callbacks() {
             @Override
             public void onCellTouch(int x, int y) {
-               playerMove();
+                if (logic.isGameOver()){
+                    makeMove();
+                }else{
+                    curX = x;
+                    curY = y;
+                    getBoardView().setCursor(x,y,true);
+                }
             }
         });
 
     }
 
-    protected BoardView getBoardView() {
+    protected BoardView getBoardView() {        //바둑판을 연결하는 부분
         return (BoardView) getFragmentView().findViewById(R.id.gameBoard);
     }
 
-    private void setupServiceButtons(){
+    private void setupServiceButtons(){     //기본적으로 다 들어가는 버튼을 정의하는 메서드
         View view = getFragmentView();
         ImageButton btnput = (ImageButton)view.findViewById(R.id.btnPut);
         btnput.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 playerMove();
             }
         });
@@ -63,13 +68,29 @@ public abstract class OmokBaseFragment extends BaseFragment{
 
     }
 
+////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////
 
 
+    private void setupLogic(){//존나 이해가 안되네 하도 안되던게 여기 이거 if문 추가하니까 떳다 시발 왜그런거냐
+        if (logic == null){
+            logic = new OmokLogic(BOARD_SIZE);
+            resetPositions();
+            isUserMove = Math.random() > 0.5;
+        }else{
 
-    private void setupLogic(){
         getBoardView().setCursor(curX, curY, false);
+        }
 
         logic.setDelegate(new OmokLogic.Delegate() {
+            @Override
+            public void onGameOver(OmokLogic.WinState winState, OmokLogic.WinLineItem[] winLine) {
+                getBoardView().setWinLine(winLine);
+                if (callbacks != null){
+                    callbacks.onGameOver();
+                }
+            }
+
             @Override
             public void onMoveComplete(int x, int y) {
                 isUserMove = !isUserMove;
@@ -82,7 +103,16 @@ public abstract class OmokBaseFragment extends BaseFragment{
 
 
     public void playerMove(){
+        if (!logic.isGameOver()){
+
         logic.playerMove(curX, curY);
+        }
+    }
+
+    private void resetPositions() {
+        curX = curY = BOARD_SIZE / 2;
+        prevX = prevY = -1;
+        getBoardView().setCursor(curX, curY, false);
     }
 
 
@@ -92,8 +122,19 @@ public abstract class OmokBaseFragment extends BaseFragment{
         void onGameOver();
         void onMenu();
     }
+    public void restart() {
+        isUserMove = Math.random() > 0.5;
+        resetPositions();
+        logic.resetGame();
+        getBoardView().resetBoard(logic.getBoard());
+        makeMove();
+    }
 
     protected boolean makeMove(){
+        if (logic.isGameOver()) {
+            restart();
+            return false;
+        }
         return true;
     }
 

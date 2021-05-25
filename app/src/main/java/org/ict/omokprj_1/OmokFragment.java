@@ -2,17 +2,21 @@ package org.ict.omokprj_1;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 
-import androidx.annotation.Nullable;
 
 public class OmokFragment extends OmokBaseFragment {
 
     public static OmokFragment getInstance(){return new OmokFragment();}
 
+    @Override
+    public int getFragmentId() {
+        return R.layout.fragment_omok;
+    }
 
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         View view = getFragmentView();
     }
@@ -28,15 +32,16 @@ public class OmokFragment extends OmokBaseFragment {
     protected boolean makeMove() {
         if (super.makeMove()) {
             getBoardView().setBoard(logic.getBoard(), prevX, prevY);
-
+            updatePutButtonStates();
             return true;
         }
         return false;
     }
+    private void updatePutButtonStates() {
+        View view = getFragmentView();
+        ImageButton btnFirst = (ImageButton)view.findViewById(R.id.btnPut);
 
-
-    @Override
-    public int getFragmentId() {
-        return R.layout.fragment_omok;
     }
+
+
 }
