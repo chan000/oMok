@@ -18,7 +18,11 @@
             </intent-filter>
             
         </activity>
+<<<<<<< HEAD
 
+=======
+    <activity android:name=".MainActivity"/>
+>>>>>>> 2e6bf4af196a54d6248ad0dbc18b34ffdb9e8c5b
     </application>
 
 </manifest>

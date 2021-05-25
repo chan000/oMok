@@ -43,4 +43,6 @@ public abstract class BaseFragment extends Fragment {
         super.onResume();
         onResume(new Preferences(getActivity()));
     }
+
+    protected abstract void onActivityCreated(Bundle savedInstanceState);
 }
