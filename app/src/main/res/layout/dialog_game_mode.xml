@@ -30,6 +30,13 @@
 
 
         <Button
+            android:id="@+id/quizBtn"
+            android:layout_width="184dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/custom_button"
+            android:text="오목퀴즈" />
+        <Button
             android:id="@+id/endGame"
             android:layout_width="184dp"
             android:layout_height="wrap_content"

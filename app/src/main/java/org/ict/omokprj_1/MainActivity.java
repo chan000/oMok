@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 public class MainActivity extends Activity {
 
@@ -85,6 +84,25 @@ public class MainActivity extends Activity {
                 @Override
                 public void onClick(View view) {
                     setActiveMode(0);
+                    dialog.dismiss();
+                }
+            });
+            Button btnAddAccount = (Button)view.findViewById(R.id.addPlayer);
+            btnAddAccount.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(getApplicationContext(), AddAccount.class);
+                    startActivity(i);
+                    dialog.dismiss();
+                }
+            });
+
+            Button quizBtn = (Button)view.findViewById(R.id.quizBtn);
+            quizBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent quiz = new Intent(getApplicationContext(), OmokQuiz.class);
+                    startActivity(quiz);
                     dialog.dismiss();
                 }
             });
