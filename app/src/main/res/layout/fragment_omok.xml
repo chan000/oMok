@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+
+        <TextView
+            android:id="@+id/textTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+            android:text="오목"
+            android:textColor="#000000"
+            android:textSize="60dp" />
+
+        <ImageButton
+            android:id="@+id/btnMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|right"
+            android:layout_marginRight="10dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/menu_pressed" />
+
+
+    </FrameLayout>
+
+    <org.ict.omokprj_1.BoardView
+        android:id="@+id/gameBoard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:text="플레이어1"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="30dp"
+            android:id="@+id/user1"/>
+
+        <ImageButton
+            android:id="@+id/btnPut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+            android:background="@android:color/transparent"
+            android:src="@drawable/put_button" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:text="플레이어2"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="30dp"
+            android:id="@+id/user2"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
