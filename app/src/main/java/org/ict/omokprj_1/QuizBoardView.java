@@ -114,13 +114,26 @@ public class QuizBoardView extends View implements View.OnTouchListener {
     protected void quizStones(Canvas canvas){
         int cellSize = canvas.getHeight() / boardSize;
 
-        int cellSize1 = (canvas.getHeight() / boardSize) * 2;
-        Toast.makeText(getContext(),cellSize1+"",Toast.LENGTH_SHORT).show();
+
+//        Toast.makeText(getContext(),"",Toast.LENGTH_SHORT).show();
         Bitmap bmp1 = blueStone;
         Bitmap bmp2 = redStone;
-        canvas.drawBitmap(bmp2, 144,72,paint);
-        canvas.drawBitmap(bmp1, cellSize*14,cellSize*14,paint); // 14*14 0부터 시작하기때문 오늘쪽 아래 돌
-        canvas.drawBitmap(bmp1, 0,0,paint);//0*0 바둑돌 왼쪽 위
+        canvas.drawBitmap(bmp1, cellSize*6,cellSize*7,paint);
+        canvas.drawBitmap(bmp1, cellSize*9,cellSize*6,paint);
+        canvas.drawBitmap(bmp1, cellSize*9,cellSize*7,paint);
+        canvas.drawBitmap(bmp1, cellSize*9,cellSize*8,paint);
+        canvas.drawBitmap(bmp1, cellSize*8,cellSize*8,paint);
+        canvas.drawBitmap(bmp1, cellSize*7,cellSize*8,paint);
+        canvas.drawBitmap(bmp1, cellSize*7,cellSize*9,paint);
+
+        ////////////////////////////////////////////////////////////
+        canvas.drawBitmap(bmp2, cellSize*7,cellSize*7,paint);
+        canvas.drawBitmap(bmp2, cellSize*9,cellSize*9,paint);
+        canvas.drawBitmap(bmp2, cellSize*6,cellSize*8,paint);
+        canvas.drawBitmap(bmp2, cellSize*6,cellSize*9,paint);
+        canvas.drawBitmap(bmp2, cellSize*6,cellSize*10,paint);
+        canvas.drawBitmap(bmp2, cellSize*8,cellSize*9,paint);
+        canvas.drawBitmap(bmp2, cellSize*10,cellSize*6,paint);
         for (int i = 0; i < boardSize; i++){
             float x = cellSize*i;
             for (int j = 0; j < boardSize; j++){
